@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inspect Path {{path.location}}</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <header>
+        <h1>Inspecting {{path.location}}</h1>
+    </header>
+    <section>
+        <h2>Record Count: {{ path.records | count}}</h2>
+
+        <table>
+            {% for record in path.records %}
+            <thead>
+                <tr>
+                    <th>
+                        <strong>{{record.request_method}}</strong> {{ record.request_path }} <em>{{record.visited}}</em>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <dl>
+                            {% for header in record.request_headers %}
+                                <dt>{{header[0]}}</dt>
+                                <dd>{{header[1]}}</dt>
+                            {% endfor %}
+                        </dl>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+    </section>
+    <footer>
+        
+    </footer>
+</body>
+</html>
