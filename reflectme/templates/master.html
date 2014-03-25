@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}Reflect Me{% endblock %}</title>
+
+        <link rel="stylesheet" href="{{url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}" type="text/css" media="screen" title="no title" charset="utf-8">  
+        <link rel="stylesheet" href="{{url_for('static', filename='highlight.css') }}" type="text/css" media="screen" title="no title" charset="utf-8">  
+        <style>
+            .container {
+                width: 970px;
+                max-width: none !important;
+            }
+        </style>            
+    </head>
+    <body>
+        <div class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ url_for('reflectme.index') }}">Reflect Me</a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url_for('reflectme.index') }}">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <script src="{{url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}" type="text/javascript" charset="utf-8"></script>
+        <script src="{{url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+{% extends "master.html" %}
+
+{% macro input(field) -%}
+  <div class="form-group row">
+    <label class="control-label col-sm-2">{{field.name}}</label>
+    <div class="col-sm-6">
+        {{field(class_='form-control')}}
+    </div>
+  </div>
+{%- endmacro %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-6">
+        <h3>Paths</h3>
+        <ul>
+            {% for path in current_paths %}
+            <li><a href="/inspect/{{path.location}}">/{{path.location}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<form method="POST" action="/" class="form-horizontal" role="form">
+    <h3>New Path</h3>
+    {{ form.csrf_token }}
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        <strong>Errors</strong>
+    <ul class="errors">
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
+    {{ input(form.location) }}
+    {{ input(form.headers) }}
+    {{ input(form.response) }}
+
+    <div class="form-group row">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-6">
+            <input type="submit" value="Create" class="btn btn-primary">
+        </div>
+    </div>
+</form>
+{% endblock %}
+

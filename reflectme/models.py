@@ -23,7 +23,8 @@ class JSONEncodedDict(TypeDecorator):
 class Path(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     location = db.Column(db.String(255), index=True)
-    content_type = db.Column(db.String(255))
+    status = db.Column(db.Integer)
+    headers = db.Column(db.Text)
     response = db.Column(db.Text)
     records = db.relationship('Record', backref='path', lazy='joined', order_by="desc(Record.visited)")
 
@@ -33,9 +34,6 @@ class Record(db.Model):
     path_id = db.Column(db.Integer, db.ForeignKey('path.id'))
 
     visited = db.Column(db.DateTime)
-    request_headers = db.Column(JSONEncodedDict)
-    request_body = db.Column(db.Text)
-    request_path = db.Column(db.String(255))
-    request_method = db.Column(db.String(255))
     request_ip = db.Column(db.String(255))
+    request_content = db.Column(db.Text)
 

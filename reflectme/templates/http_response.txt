@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+{% for header, value in headers.iteritems() -%}
+{% if value != '' -%}
+{{header}}: {{value}}
+{% endif -%}
+{% endfor -%}
+{% if path.response != '' %}
+{{ path.response | safe }}
+{% endif -%}

@@ -1,0 +1,7 @@
+{{request.method}} {{request.environ.PATH_INFO}} {{request.environ.SERVER_PROTOCOL}}
+{% for header, value in request.headers.iteritems() -%}
+{% if value != '' -%}
+{{header}}: {{value}}
+{% endif -%}
+{% endfor %}
+{{request.environ.body_copy}}
