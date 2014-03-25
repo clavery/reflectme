@@ -11,6 +11,7 @@ from pygments.formatters import HtmlFormatter
 from .database import db
 from .models import Path, Record
 from .forms import PathForm
+from .utils import parse_headers
 
 reflectme = Blueprint('reflectme', __name__)
 
@@ -20,11 +21,6 @@ def get_path_instance(location):
     except NoResultFound:
         abort(404)
     return path
-
-def parse_headers(headers):
-    raw_headers = headers.splitlines()
-    raw_headers = [h.split(':') for h in raw_headers]
-    return {h[0].strip() : h[1].strip() for h in raw_headers}
 
 @reflectme.route('/<path:location>', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def view_path(location):
