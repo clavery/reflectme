@@ -24,3 +24,9 @@ $ curl http://localhost:8080/test -i --data "foo=bar"
 ```
 
 Refresh the inspection page to view your results.
+
+Screenshot
+----------
+
+![reflectme screenshot](screenshot.png)
+
