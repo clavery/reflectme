@@ -1,32 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Inspect Path {{path.location}}</title>
-    <meta charset="utf-8" />
-</head>
-<body>
-    <header>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Inspect Path {{path.location}}</title>
+
+        <link rel="stylesheet" href="{{url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}" type="text/css" media="screen" title="no title" charset="utf-8">  
+    </head>
+    <body>
+        <div class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url_for('reflectme.index') }}">Reflect Me</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url_for('reflectme.index') }}">Home</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <div class="container">
+
+
         <h1>Inspecting {{path.location}}</h1>
-    </header>
-    <section>
         <h2>Record Count: {{ path.records | count}}</h2>
 
-        <table>
+        <table class="table table-striped">
             {% for record in path.records %}
-            <thead>
-                <tr>
-                    <th>
-                        <strong>{{record.request_method}}</strong> {{ record.request_path }} <em>{{record.visited}}</em>
-                    </th>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
+                    <th>
+                        <strong>{{record.request_method}}</strong> {{ record.request_path }} @ <em>{{record.visited}}</em>
+                    </th>
+                </tr>
+                <tr>
                     <td>
-                        <dl>
+                        <dl class="dl-horizontal">
                             {% for header in record.request_headers %}
-                                <dt>{{header[0]}}</dt>
-                                <dd>{{header[1]}}</dt>
+                            <dt>{{header[0]}}</dt>
+                            <dd>{{header[1]}}</dt>
                             {% endfor %}
                         </dl>
                     </td>
@@ -34,10 +55,8 @@
             </tbody>
             {% endfor %}
         </table>
-
-    </section>
-    <footer>
-        
-    </footer>
-</body>
+</div>
+        <script src="{{url_for('static', filename='bower_components/jquery/jquery.min.js') }}" type="text/javascript" charset="utf-8"></script>
+        <script src="{{url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
+    </body>
 </html>

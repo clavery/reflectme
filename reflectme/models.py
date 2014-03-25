@@ -25,7 +25,7 @@ class Path(db.Model):
     location = db.Column(db.String(255), index=True)
     content_type = db.Column(db.String(255))
     response = db.Column(db.Text)
-    records = db.relationship('Record', backref='path', lazy='joined')
+    records = db.relationship('Record', backref='path', lazy='joined', order_by="desc(Record.visited)")
 
 
 class Record(db.Model):
