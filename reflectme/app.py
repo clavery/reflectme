@@ -33,7 +33,7 @@ class WSGICopyBody(object):
             start_response(status, headers, exc_info)
         return callback
 
-def create_app(testing=False):
+def create_app(database='database.db', testing=False):
     """Application factory"""
 
     app = Flask(__name__, instance_relative_config=True)
@@ -42,6 +42,8 @@ def create_app(testing=False):
     app.config.from_object('reflectme.settings')
     app.config.from_pyfile('settings.py', silent=True)
 
+    database_uri = 'sqlite:///{0}'.format(database)
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
     db.init_app(app)
 
     if not testing:
