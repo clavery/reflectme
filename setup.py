@@ -29,6 +29,12 @@ setup(
     url='https://github.com/clavery/reflectme',
     packages=packages,
     package_dir={'reflectme': 'reflectme'},
+    package_data={
+        'reflectme': [
+            'static/*',
+            'templates/*'
+        ],
+    },
     include_package_data=True,
     install_requires=requires,
     license='MIT License',

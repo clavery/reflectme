@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title %}Reflect Me{% endblock %}</title>
 
-        <link rel="stylesheet" href="{{url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}" type="text/css" media="screen" title="no title" charset="utf-8">  
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css') }}" type="text/css" media="screen" title="no title" charset="utf-8">  
         <link rel="stylesheet" href="{{url_for('static', filename='highlight.css') }}" type="text/css" media="screen" title="no title" charset="utf-8">  
         <style>
             .container {
@@ -30,7 +30,7 @@
             {% block content %}
             {% endblock %}
         </div>
-        <script src="{{url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}" type="text/javascript" charset="utf-8"></script>
-        <script src="{{url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
+        <script src="{{url_for('static', filename='jquery.min.js') }}" type="text/javascript" charset="utf-8"></script>
+        <script src="{{url_for('static', filename='bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>

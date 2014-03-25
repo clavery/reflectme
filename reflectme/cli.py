@@ -13,9 +13,9 @@ def main(argv=None, prog=None, **kwargs):
     parser = argparse.ArgumentParser(description='Create an HTTP server to record and\
                                      respond to requests.')
     parser.add_argument('host', type=str, default='0.0.0.0', nargs='?',
-                        help='host to listen on')
+                        help='host to listen on (default: 0.0.0.0)')
     parser.add_argument('port', type=int, default=5000, nargs='?',
-                        help='host to listen on')
+                        help='host to listen on (default: 5000)')
     parser.add_argument('--database', dest='database', help='sqlite database location (default: {0})'
                         .format(database_location), type=str, default=database_location)
     args = parser.parse_args()
