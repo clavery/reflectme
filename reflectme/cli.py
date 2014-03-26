@@ -13,11 +13,11 @@ def main(argv=None, prog=None, **kwargs):
     parser = argparse.ArgumentParser(description='Create an HTTP server to record and\
                                      respond to requests.')
     parser.add_argument('host', type=str, default='0.0.0.0', nargs='?',
-                        help='host to listen on (default: 0.0.0.0)')
+                        help='host to listen on (default: %(default)s)')
     parser.add_argument('port', type=int, default=5000, nargs='?',
-                        help='host to listen on (default: 5000)')
+                        help='host to listen on (default: %(default)s)')
     parser.add_argument('--database', dest='database', type=str, default=database_location,
-                        help='sqlite database location (default: {0})'.format(database_location))
+                        help='sqlite database location (default: %(default)s)'.format(database_location))
     parser.add_argument('--debug', dest='debug', action='store_true',
                         help='run web server in debug mode')
     parser.add_argument('--reset', dest='reset', action='store_true',
