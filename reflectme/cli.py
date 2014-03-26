@@ -16,12 +16,16 @@ def main(argv=None, prog=None, **kwargs):
                         help='host to listen on (default: 0.0.0.0)')
     parser.add_argument('port', type=int, default=5000, nargs='?',
                         help='host to listen on (default: 5000)')
-    parser.add_argument('--database', dest='database', help='sqlite database location (default: {0})'
-                        .format(database_location), type=str, default=database_location)
-    parser.add_argument('--debug', dest='debug', help='run web server in debug mode', action='store_true',
-                        default=False)
-    parser.add_argument('--reset', dest='reset', help='reset database (clear all records)', action='store_true',
-                        default=False)
+    parser.add_argument('--database', dest='database', type=str, default=database_location,
+                        help='sqlite database location (default: {0})'.format(database_location))
+    parser.add_argument('--debug', dest='debug', action='store_true',
+                        help='run web server in debug mode')
+    parser.add_argument('--reset', dest='reset', action='store_true',
+                        help='reset database (clear all records)',)
+    parser.set_defaults(host='0.0.0.0', port=5000,
+                        database=database_location,
+                        debug=False,
+                        reset=False)
 
     args = parser.parse_args()
 
