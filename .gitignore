@@ -1,5 +1,5 @@
 database.db
 *.pyc
-/dist/
-/build/
-/*.egg-info/
+dist/
+build/
+*.egg-info/

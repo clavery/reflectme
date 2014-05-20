@@ -4,37 +4,24 @@ import os
 import sys
 
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
-    from distutils.core import setup
+    from distutils.core import setup, find_packages
 
-packages = [
-    'reflectme',
-]
 
-requires = [
-    'Flask==0.10.1',
-    'Flask-SQLAlchemy==1.0',
-    'Flask-WTF==0.9.5',
-    'Pygments==1.6',
-    'appdirs==1.2.0',
-]
+package_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)))
+with open(os.path.join(package_dir, 'requirements.txt')) as f:
+    requires = [p.rstrip() for p in f.readlines()]
+
 
 setup(
     name='reflectme',
-    version='0.0.1',
+    version='0.0.2',
     description='Simple HTTP server for recording requests and returning arbitrary responses.',
     author='Charles Lavery',
     author_email='charles.lavery@gmail.com',
     url='https://github.com/clavery/reflectme',
-    packages=packages,
-    package_dir={'reflectme': 'reflectme'},
-    package_data={
-        'reflectme': [
-            'static/*',
-            'templates/*'
-        ],
-    },
+    packages=find_packages(),
     include_package_data=True,
     install_requires=requires,
     license='MIT License',

@@ -1,0 +1,2 @@
+recursive-include reflectme/templates *
+recursive-include reflectme/static *
