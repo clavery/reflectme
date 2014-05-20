@@ -7,6 +7,10 @@ Installation
 ------------
 
 ```sh
+$ pip install reflectme
+```
+
+```sh
 $ python setup.py install
 ```
 
