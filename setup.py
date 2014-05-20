@@ -16,7 +16,7 @@ with open(os.path.join(package_dir, 'requirements.txt')) as f:
 
 setup(
     name='reflectme',
-    version='0.0.2',
+    version='0.0.4',
     description='Simple HTTP server for recording requests and returning arbitrary responses.',
     author='Charles Lavery',
     author_email='charles.lavery@gmail.com',
@@ -36,6 +36,6 @@ setup(
         'Programming Language :: Python :: 2.7'
     ),
     entry_points = {
-        'console_scripts': [ 'reflectme = reflectme.cli:main' ],
+        'console_scripts': ['reflectme = reflectme.cli:main'],
     },
 )
